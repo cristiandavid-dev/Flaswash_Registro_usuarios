@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken'; // Importamos jsjsonwebtoken para generar y vericar tokens
 import * as authService from '../services/authServices.js';
 
 // Controlador para el método POST de Login
