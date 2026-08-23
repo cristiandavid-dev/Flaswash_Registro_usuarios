@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FlashWash — Lavado profesional de vehículos. Servicios de lavado, polichado y mantenimiento con calidad garantizada.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Flashwash — Lavado Profesional de Vehículos</title>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col font-[Inter]">
+ <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        <div class="flex items-center gap-3">
+            <img src="img/logo.png" alt="Logo FlashWash" class="w-10 h-10 object-contain">
+            <h1 class="text-2xl font-black text-blue-600">Flashwash</h1>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
+            <a href="#inicio"    class="hover:text-blue-600 transition">Inicio</a>
+            <a href="#servicios" class="hover:text-blue-600 transition">Servicios</a>
+            <a href="#precios"   class="hover:text-blue-600 transition">Precios</a>
+            <a href="#login"     class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl transition shadow-sm">Ingresar</a>
+        </nav>
+        <!-- Encabezado de navegación -->
+        <a href="#login" class="md:hidden bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-xl">Ingresar</a>
+    </div>
+</header>
+
+<section id="inicio" class="flex flex-grow min-h-[calc(100vh-73px)]">
+
+    <!-- Carrusel de imágenes de fondo (Solo visible en pantallas grandes) -->
+    <div class="hidden lg:block lg:w-3/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-black/60 z-10"></div>
+        <img src="img/lavado1.jpg" class="slide slide1 absolute w-full h-full object-cover" alt="Lavado de vehículo">
+        <img src="img/lavado2.jpg" class="slide slide2 absolute w-full h-full object-cover" alt="Polichado profesional">
+        <img src="img/lavado3.jpg" class="slide slide3 absolute w-full h-full object-cover" alt="Lavado de motor">
+
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-12">
+            <h2 class="text-5xl font-black mb-4 leading-tight drop-shadow-lg">
+                El mejor cuidado<br>para tu vehículo
+            </h2>
+            <p class="text-lg text-white/80 max-w-md">Calidad, rapidez y atención al detalle en cada servicio.</p>
+            <div class="flex gap-3 mt-8">
+                <a href="#servicios" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-xl transition text-sm">Ver servicios</a>
+                <a href="#precios"   class="bg-white/20 hover:bg-white/30 backdrop-blur text-white font-bold px-6 py-3 rounded-xl transition text-sm">Ver precios</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor del formulario de inicio de sesión -->
+    <div id="login" class="w-full lg:w-2/5 flex items-center justify-center py-12 px-6 bg-slate-50">
+        <div class="w-full max-w-sm">
+
+            <div class="text-center mb-8">
+                <img src="img/logo.png" class="w-24 mx-auto mb-4 drop-shadow-md" alt="Logo FlashWash">
+                <h2 class="text-2xl font-extrabold text-gray-900">Bienvenido</h2>
+                <p class="text-sm text-gray-500 mt-1">Ingresa a tu panel de control</p>
+            </div>
+
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        placeholder="tu@correo.com"
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                        required
+                    >
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="password">Contraseña</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="••••••••"
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 rounded-xl transition shadow-md text-sm mt-2">
+                    Inicio de sesión
+                </button>
+                <a href="registro.html" class="w-full border-2 border-blue-600 hover:bg-blue-50 text-blue-600 font-bold py-3 rounded-xl transition shadow-sm text-sm mt-3 flex items-center justify-center gap-2 text-center">
+                    <span class="material-symbols-outlined text-lg">person_add</span>
+                    Registro
+                </a>
+            </form>
+
+            <p id="mensaje" class="text-red-500 text-center mt-3 text-sm font-medium"></p>
+
+            <div class="my-6 flex items-center gap-3">
+                <hr class="flex-1 border-gray-200">
+                <span class="text-xs text-gray-400 font-medium">O continúa con</span>
+                <hr class="flex-1 border-gray-200">
+            </div>
+
+            <div class="space-y-3">
+                <button class="w-full border-2 border-gray-200 bg-white hover:bg-gray-50 py-3 rounded-xl flex justify-center items-center gap-2 text-sm font-semibold text-gray-700 transition">
+                    <img src="img/google.png" class="w-5" alt="Google">
+                    Continuar con Google
+                </button>
+                <button class="w-full bg-[#1877F2] hover:bg-[#166FE5] text-white py-3 rounded-xl flex justify-center items-center gap-2 text-sm font-semibold transition">
+                    <img src="img/facebook.png" class="w-5" alt="Facebook">
+                    Continuar con Facebook
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+            <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">Lo que hacemos</span>
+            <h2 class="text-4xl font-black text-gray-900 mb-4">Nuestros Servicios</h2>
+            <p class="text-gray-500 max-w-xl mx-auto text-base">Ofrecemos una amplia gama de servicios de lavado y mantenimiento estético para mantener tu vehículo en perfecto estado.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+             <!-- Lavado de Motocicleta -->
+            <div class="group bg-white border-2 border-gray-100 hover:border-red-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
+                <div class="w-14 h-14 bg-red-50 group-hover:bg-red-100 rounded-2xl flex items-center justify-center mb-4 transition">
+                    <span class="material-symbols-outlined text-red-500" style="font-size:28px">two_wheeler</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-2">Lavado de Moto</h3>
+                <p class="text-sm text-gray-500 leading-relaxed mb-4">Lavado completo de motocicletas con agua a presión, shampoo especializado, limpieza de rines y secado manual. Rápido y sin dañar la pintura.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-red-50 text-red-500 font-semibold px-3 py-1 rounded-full">Motos</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">15-20 min</span>
+                </div>
+            </div>
+
+            <!-- Lavado Sencillo -->
+            <div class="group bg-white border-2 border-gray-100 hover:border-blue-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
+                <div class="w-14 h-14 bg-blue-50 group-hover:bg-blue-100 rounded-2xl flex items-center justify-center mb-4 transition">
+                    <span class="material-symbols-outlined text-blue-600" style="font-size:28px">local_car_wash</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-2">Lavado Sencillo</h3>
+                <p class="text-sm text-gray-500 leading-relaxed mb-4">Lavado exterior completo con agua a presión, shampoo profesional, secado y limpieza de vidrios. Ideal para el mantenimiento diario.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-blue-50 text-blue-600 font-semibold px-3 py-1 rounded-full">Exterior</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">30-40 min</span>
+                </div>
+            </div>
+
+            <!-- Lavado Completo -->
+            <div class="group bg-white border-2 border-gray-100 hover:border-green-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
+                <div class="w-14 h-14 bg-green-50 group-hover:bg-green-100 rounded-2xl flex items-center justify-center mb-4 transition">
+                    <span class="material-symbols-outlined text-green-600" style="font-size:28px">cleaning_services</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-2">Lavado Interior</h3>
+                <p class="text-sm text-gray-500 leading-relaxed mb-4">Aspirado completo del habitáculo, limpieza de tapizado, tablero, plásticos y vidrios interiores. Elimina polvo, bacterias y malos olores.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-green-50 text-green-600 font-semibold px-3 py-1 rounded-full">Interior</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">45 min</span>
+                </div>
+            </div>
+
+            <!-- Polichado Completo -->
+            <div class="group bg-white border-2 border-gray-100 hover:border-purple-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
+                <div class="w-14 h-14 bg-purple-50 group-hover:bg-purple-100 rounded-2xl flex items-center justify-center mb-4 transition">
+                    <span class="material-symbols-outlined text-purple-600" style="font-size:28px">verified</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-2">Polichado Completo</h3>
+                <p class="text-sm text-gray-500 leading-relaxed mb-4">Tratamiento de carrocería con pulidora orbital, corrección de pequeños rayones superficiales y aplicación de encerado de alta gama para brillo espejo.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-purple-50 text-purple-600 font-semibold px-3 py-1 rounded-full">Premium</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">50-60 min</span>
+                </div>
+            </div>
+
+            <!-- Lavado de Motor -->
+            <div class="group bg-white border-2 border-gray-100 hover:border-orange-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
+                <div class="w-14 h-14 bg-orange-50 group-hover:bg-orange-100 rounded-2xl flex items-center justify-center mb-4 transition">
+                    <span class="material-symbols-outlined text-orange-600" style="font-size:28px">build</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-2">Lavado de Motor</h3>
+                <p class="text-sm text-gray-500 leading-relaxed mb-4">Limpieza técnica y segura del compartimiento del motor con desengrasante especializado, eliminando grasa y suciedad acumulada sin dañar componentes eléctricos.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-orange-50 text-orange-600 font-semibold px-3 py-1 rounded-full">Técnico</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">20 min</span>
+                </div>
+            </div>
+
+            <!-- Encerado Premium -->
+            <div class="group bg-white border-2 border-gray-100 hover:border-yellow-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
+                <div class="w-14 h-14 bg-yellow-50 group-hover:bg-yellow-100 rounded-2xl flex items-center justify-center mb-4 transition">
+                    <span class="material-symbols-outlined text-yellow-600" style="font-size:28px">auto_awesome</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-2">Encerado Premium</h3>
+                <p class="text-sm text-gray-500 leading-relaxed mb-4">Aplicación de cera carnauba de alta protección que sella la pintura, repele el agua, el polvo y los contaminantes ambientales por hasta 6 meses.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-yellow-50 text-yellow-600 font-semibold px-3 py-1 rounded-full">Protección</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">60-90 min</span>
+                </div>
+            </div>
+
+            <!-- Pack Full -->
+            <div class="group bg-gradient-to-br from-blue-600 to-blue-800 border-2 border-blue-600 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 text-white">
+                <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-white" style="font-size:28px">workspace_premium</span>
+                </div>
+                <h3 class="text-lg font-extrabold mb-2">Pack Full Detailing</h3>
+                <p class="text-sm text-blue-100 leading-relaxed mb-4">El servicio todo-en-uno: lavado exterior e interior, polichado de carrocería, encerado premium y lavado de motor. El máximo cuidado para tu vehículo.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-white/20 text-white font-semibold px-3 py-1 rounded-full">Todo incluido</span>
+                    <span class="text-xs bg-white/20 text-white font-semibold px-3 py-1 rounded-full">2-3 hrs</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!--PRECIOS  -->
+<section id="precios" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+            <span class="inline-block bg-green-50 text-green-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">Transparencia total</span>
+            <h2 class="text-4xl font-black text-gray-900 mb-4">Planes y Precios</h2>
+            <p class="text-gray-500 max-w-xl mx-auto text-base">Sin sorpresas ni cobros ocultos. Elige el servicio que tu vehículo necesita.</p>
+        </div>
+
+        <!-- Cuadrícula de tarjetas de precios -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+            <!-- Lavado Sencillo -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-600" style="font-size:20px">local_car_wash</span>
+                        </div>
+                        <h3 class="font-extrabold text-gray-800">Lavado Sencillo</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-black text-blue-600">$25.000</span>
+                        <span class="text-gray-400 text-sm mb-1">COP</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Lavado exterior a presión
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Shampoo profesional
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Secado con microfibra
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Limpieza de vidrios
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 30-40 min</span>
+                        <a href="#login" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lavado Interior -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-600" style="font-size:20px">cleaning_services</span>
+                        </div>
+                        <h3 class="font-extrabold text-gray-800">Lavado Interior</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-black text-blue-600">$35.000</span>
+                        <span class="text-gray-400 text-sm mb-1">COP</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Aspirado completo
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Limpieza de tapizado
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Limpieza de tablero
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Aromatización
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 45 min</span>
+                        <a href="#login" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lavado de Motor -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-orange-600" style="font-size:20px">build</span>
+                        </div>
+                        <h3 class="font-extrabold text-gray-800">Lavado de Motor</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-black text-blue-600">$30.000</span>
+                        <span class="text-gray-400 text-sm mb-1">COP</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Desengrasante especializado
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Limpieza segura de componentes
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Protección de eléctricos
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Acabado brillante
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 20 min</span>
+                        <a href="#login" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polichado Completo -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-purple-600" style="font-size:20px">verified</span>
+                        </div>
+                        <h3 class="font-extrabold text-gray-800">Polichado Completo</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-black text-blue-600">$45.000</span>
+                        <span class="text-gray-400 text-sm mb-1">COP</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Pulido con máquina orbital
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Corrección de rayones leves
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Encerado de alta gama
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Brillo espejo garantizado
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 50-60 min</span>
+                        <a href="#login" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Encerado Premium -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-yellow-600" style="font-size:20px">auto_awesome</span>
+                        </div>
+                        <h3 class="font-extrabold text-gray-800">Encerado Premium</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-black text-blue-600">$55.000</span>
+                        <span class="text-gray-400 text-sm mb-1">COP</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Cera carnauba importada
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Efecto hidrofóbico
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Protección hasta 6 meses
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Resistencia UV
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 60-90 min</span>
+                        <a href="#login" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lavado de Moto -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-red-500" style="font-size:20px">two_wheeler</span>
+                        </div>
+                        <h3 class="font-extrabold text-gray-800">Lavado de Moto</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-4">
+                        <span class="text-4xl font-black text-blue-600">$15.000</span>
+                        <span class="text-gray-400 text-sm mb-1">COP</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Lavado exterior a presión
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Shampoo especializado
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Limpieza de rines
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-gray-600">
+                            <span class="material-symbols-outlined text-green-500" style="font-size:16px">check_circle</span>
+                            Secado manual sin rayaduras
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 15-20 min</span>
+                        <a href="#login" class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paquete de Detallado Completo (Pack Full) — DESTACADO -->
+            <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-yellow-400 text-gray-900 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">⭐ Más Popular</span>
+                </div>
+                <div class="p-6 text-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white" style="font-size:20px">workspace_premium</span>
+                        </div>
+                        <h3 class="font-extrabold">Pack Full Detailing</h3>
+                    </div>
+                    <div class="flex items-end gap-1 mb-1">
+                        <span class="text-4xl font-black">$120.000</span>
+                        <span class="text-blue-200 text-sm mb-1">COP</span>
+                    </div>
+                    <p class="text-blue-200 text-xs mb-4">Ahorra $70.000 vs. servicios separados</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-blue-100">
+                            <span class="material-symbols-outlined text-yellow-300" style="font-size:16px">check_circle</span>
+                            Lavado exterior + interior
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-blue-100">
+                            <span class="material-symbols-outlined text-yellow-300" style="font-size:16px">check_circle</span>
+                            Polichado completo
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-blue-100">
+                            <span class="material-symbols-outlined text-yellow-300" style="font-size:16px">check_circle</span>
+                            Encerado premium
+                        </li>
+                        <li class="flex items-center gap-2 text-sm text-blue-100">
+                            <span class="material-symbols-outlined text-yellow-300" style="font-size:16px">check_circle</span>
+                            Lavado de motor
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-6 pb-6">
+                    <div class="flex justify-between items-center text-xs text-blue-200 border-t border-white/20 pt-4">
+                        <span class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> 2-3 horas</span>
+                        <a href="#login" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 text-xs font-black px-4 py-2 rounded-lg transition">Agendar</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Nota informativa -->
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex items-start gap-4 max-w-3xl mx-auto">
+            <span class="material-symbols-outlined text-blue-500 flex-shrink-0 mt-0.5" style="font-size:22px">info</span>
+            <div>
+                <p class="text-sm font-bold text-blue-800 mb-1">Precios sujetos al tipo de vehículo</p>
+                <p class="text-sm text-blue-600">Los precios mostrados aplican para vehículos tipo sedán. Para SUVs, camionetas y vehículos de gran tamaño puede aplicar un ajuste adicional. <a href="#login" class="font-bold underline">Ingresa</a> para ver la cotización exacta de tu vehículo.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="bg-gray-900 text-gray-400 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+            <img src="img/logo.png" alt="Logo" class="w-8 h-8 object-contain opacity-80">
+            <span class="text-white font-black text-lg">Flashwash</span>
+        </div>
+        <p class="text-sm text-center">© 2024 Flashwash. Todos los derechos reservados.</p>
+        <div class="flex gap-6 text-sm">
+            <a href="#" class="hover:text-white transition">Privacidad</a>
+            <a href="#" class="hover:text-white transition">Términos</a>
+            <a href="#" class="hover:text-white transition">Soporte</a>
+        </div>
+    </div>
+</footer>
+
+    <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+
+<!-- Script de desplazamiento suave (smooth scroll) para los enlaces internos -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

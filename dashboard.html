@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de control de FlashWash. Gestiona tus citas, consulta promociones y administra tu perfil.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Dashboard | Flashwash</title>
+</head>
+
+<body class="bg-slate-100 font-[Inter] min-h-screen flex flex-col">
+
+    <!-- ═══════════════════ HEADER ═══════════════════ -->
+    <header class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <div class="flex items-center gap-4">
+                <img src="img/logo.png" alt="FlashWash Logo" class="w-12 h-12 object-contain">
+                <div>
+                    <h1 class="text-2xl font-black text-blue-600">Flashwash</h1>
+                    <p class="text-xs text-gray-500">Panel de Control Principal</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-gray-600">
+                <a href="#" data-view="vista-inicio"
+                   onclick="showView('vista-inicio'); return false;"
+                   class="nav-active flex items-center gap-1.5 hover:text-blue-600 transition">
+                    <span class="material-symbols-outlined text-xl">home</span> Inicio
+                </a>
+                <a href="#" data-view="vista-citas"
+                   onclick="showView('vista-citas'); return false;"
+                   class="flex items-center gap-1.5 hover:text-blue-600 transition">
+                    <span class="material-symbols-outlined text-xl">calendar_month</span> Citas
+                </a>
+                <a href="#" data-view="vista-promociones"
+                   onclick="showView('vista-promociones'); return false;"
+                   class="flex items-center gap-1.5 hover:text-blue-600 transition">
+                    <span class="material-symbols-outlined text-xl">local_offer</span> Promociones
+                </a>
+                <a href="#" data-view="vista-perfil"
+                   onclick="showView('vista-perfil'); return false;"
+                   class="flex items-center gap-1.5 hover:text-blue-600 transition">
+                    <span class="material-symbols-outlined text-xl">person</span> Mi Perfil
+                </a>
+            </nav>
+
+            <!-- Navegación para dispositivos móviles -->
+            <nav class="flex md:hidden items-center gap-3 text-gray-500">
+                <button onclick="showView('vista-inicio')" class="flex items-center justify-center p-2">
+                    <span class="material-symbols-outlined text-xl">home</span>
+                </button>
+                <button onclick="showView('vista-citas')" class="flex items-center justify-center p-2">
+                    <span class="material-symbols-outlined text-xl">calendar_month</span>
+                </button>
+                <button onclick="showView('vista-promociones')" class="flex items-center justify-center p-2">
+                    <span class="material-symbols-outlined text-xl">local_offer</span>
+                </button>
+                <button onclick="showView('vista-perfil')" class="flex items-center justify-center p-2">
+                    <span class="material-symbols-outlined text-xl">person</span>
+                </button>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-bold text-gray-800">¡Hola, <span id="usuario-header"></span>!</p>
+                    <p class="text-xs text-gray-500 font-medium">Socio Platinum</p>
+                </div>
+                <button onclick="cerrarSesion()" class="flex items-center gap-2 bg-red-50 text-red-500 hover:bg-red-100 px-4 py-2 rounded-xl font-semibold transition">
+                    <span class="material-symbols-outlined text-sm">logout</span>
+                    <span class="hidden sm:inline">Cerrar sesión</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════════════ MAIN ═══════════════════ -->
+    <main class="max-w-7xl mx-auto px-6 py-8 flex-grow w-full">
+
+        <!-- ─── VISTA: INICIO ─── -->
+        <div id="vista-inicio" class="vista active">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Banner de bienvenida al usuario -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-white to-blue-50">
+                        <div>
+                            <h2 class="text-2xl font-extrabold text-gray-900 mb-1">¡Qué bueno verte por aquí! 👋</h2>
+                            <p class="text-gray-600 text-sm">Gestiona tus vehículos, agenda tus citas de lavado y haz el seguimiento de tus solicitudes activas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Banner de Llamado a la Acción (CTA) para agendar cita rápida -->
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 text-white shadow-md flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div class="space-y-2 text-center md:text-left">
+                            <h3 class="text-xl font-bold flex items-center justify-center md:justify-start gap-2">
+                                <span class="material-symbols-outlined text-2xl">directions_car</span>
+                                ¿Tu vehículo necesita atención inmediata?
+                            </h3>
+                            <p class="text-blue-100 text-xs max-w-md">Elige el servicio idóneo, selecciona la fecha de tu preferencia y aparta tu turno en menos de dos minutos.</p>
+                        </div>
+                        <button onclick="showView('vista-citas')" class="w-full md:w-auto bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform active:scale-95 whitespace-nowrap text-sm tracking-wide">
+                            AGENDAR CITA AHORA
+                        </button>
+                    </div>
+
+                    <!-- Catálogo de servicios de lavado disponibles -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-gray-800">Catálogo de Servicios Disponibles</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                            <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                                <div>
+                                    <div class="bg-blue-50 p-2.5 rounded-xl text-blue-600 w-fit mb-3">
+                                        <span class="material-symbols-outlined text-xl">local_car_wash</span>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800 text-base mb-1">Lavado Sencillo</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Lavado exterior rápido, eficiente y con un acabado óptimo para tu día a día.</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                    <span class="text-blue-600 font-black text-lg">$25.000</span>
+                                    <span class="text-[11px] text-gray-400 font-medium">30-40 min</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                                <div>
+                                    <div class="bg-green-50 p-2.5 rounded-xl text-green-600 w-fit mb-3">
+                                        <span class="material-symbols-outlined text-xl">verified</span>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800 text-base mb-1">Polichado Completo</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Tratamiento de carrocería profundo que incluye encerado de alta gama y brillo premium.</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                    <span class="text-blue-600 font-black text-lg">$45.000</span>
+                                    <span class="text-[11px] text-gray-400 font-medium">50-60 min</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                                <div>
+                                    <div class="bg-purple-50 p-2.5 rounded-xl text-purple-600 w-fit mb-3">
+                                        <span class="material-symbols-outlined text-xl">build</span>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800 text-base mb-1">Lavado de Motor</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Limpieza técnica del vano de motor para remover la grasa y suciedad acumulada.</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                    <span class="text-blue-600 font-black text-lg">$30.000</span>
+                                    <span class="text-[11px] text-gray-400 font-medium">20 min</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                                <div>
+                                    <div class="bg-red-50 p-2.5 rounded-xl text-red-500 w-fit mb-3">
+                                        <span class="material-symbols-outlined text-xl">two_wheeler</span>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800 text-base mb-1">Lavado de Motocicleta</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Lavado completo de motocicletas con shampoo especializado, limpieza de rines y secado sin rayaduras.</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                    <span class="text-blue-600 font-black text-lg">$15.000</span>
+                                    <span class="text-[11px] text-gray-400 font-medium">15-20 min</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                                <div>
+                                    <div class="bg-yellow-50 p-2.5 rounded-xl text-yellow-600 w-fit mb-3">
+                                        <span class="material-symbols-outlined text-xl">auto_awesome</span>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800 text-base mb-1">Encerado Premium</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Cera carnauba de alta protección que repele el agua y protege la pintura hasta 6 meses.</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                    <span class="text-blue-600 font-black text-lg">$55.000</span>
+                                    <span class="text-[11px] text-gray-400 font-medium">60-90 min</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                                <div>
+                                    <div class="bg-green-50 p-2.5 rounded-xl text-green-600 w-fit mb-3">
+                                        <span class="material-symbols-outlined text-xl">cleaning_services</span>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800 text-base mb-1">Lavado Interior</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Aspirado completo, limpieza de tapizado, tablero y aromatización del habitáculo.</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                                    <span class="text-blue-600 font-black text-lg">$35.000</span>
+                                    <span class="text-[11px] text-gray-400 font-medium">45 min</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Barra lateral (Sidebar) con información complementaria -->
+                <div class="space-y-6">
+
+                    <!-- Widget de Condición Meteorológica (Clima) -->
+                    <div class="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl p-6 text-white shadow-sm relative overflow-hidden">
+                        <div class="relative z-10">
+                            <p class="text-[10px] uppercase font-bold tracking-wider opacity-80">Condición Meteorológica</p>
+                            <h3 class="text-3xl font-black mt-1 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-yellow-300 text-3xl">wb_sunny</span> 28°C
+                            </h3>
+                            <p class="text-xs mt-2 opacity-90 font-medium">Día óptimo para lavar tu vehículo.</p>
+                        </div>
+                        <span class="material-symbols-outlined absolute -right-6 -bottom-6 text-8xl text-white opacity-10">cloud</span>
+                    </div>
+
+                    <!-- Tarjeta de estado de cuenta del usuario -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 space-y-4">
+                        <h3 class="font-bold text-gray-800 text-sm border-b pb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base text-gray-400">badge</span> Estado de Cuenta
+                        </h3>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                                <span class="material-symbols-outlined text-xl">person</span>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-gray-400">Categoría actual</p>
+                                <p class="text-xs font-bold text-gray-800">Socio de Nivel Platinum</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 text-center pt-2">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-gray-100">
+                                <p class="text-lg font-extrabold text-blue-600">12</p>
+                                <p class="text-[10px] text-gray-500 font-medium">Servicios Completados</p>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-gray-100">
+                                <p class="text-lg font-extrabold text-green-600">2</p>
+                                <p class="text-[10px] text-gray-500 font-medium">Vehículos en Garaje</p>
+                            </div>
+                        </div>
+
+                        <!-- Enlaces de acceso rapido -->
+                        <div class="pt-2 space-y-2">
+                            <button onclick="showView('vista-citas')" class="w-full flex items-center gap-2 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-2.5 rounded-xl transition">
+                                <span class="material-symbols-outlined text-base">calendar_month</span> Ver mis citas
+                            </button>
+                            <button onclick="showView('vista-promociones')" class="w-full flex items-center gap-2 text-xs font-semibold text-purple-600 bg-purple-50 hover:bg-purple-100 px-3 py-2.5 rounded-xl transition">
+                                <span class="material-symbols-outlined text-base">local_offer</span> Ver promociones
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /vista-inicio -->
+
+
+        <!-- ─── VISTA: CITAS ─── -->
+        <div id="vista-citas" class="vista">
+            <div class="mb-6">
+                <h2 class="section-title">
+                    <span class="material-symbols-outlined text-blue-600" style="vertical-align:-5px;font-size:1.6rem">calendar_month</span>
+                    <span id="titulo-citas">Gestión de Citas</span>
+                </h2>
+                <p class="section-subtitle" id="subtitulo-citas">Agenda, consulta y gestiona todos tus servicios de lavado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+
+                <!-- Formulario de agendamiento de nuevas citas -->
+                <div class="lg:col-span-2">
+                    <div class="card sticky top-24">
+                        <h3 class="font-extrabold text-gray-800 text-base mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-blue-500">add_circle</span>
+                            Nueva Cita
+                        </h3>
+                        <form id="form-cita" class="space-y-4">
+                            <div>
+                            <label class="form-label" for="cita-usuario">Nombre de usuario</label>
+                            <input type="text" id="cita-usuario" class="form-input" placeholder="Ej: Juan Pérez" required>
+                            <label class="form-label" for="cita-servicio">Servicio</label>
+                            <select id="cita-servicio" class="form-input" required>
+                                <option value="lavado-moto">Lavado de Motocicleta — $15.000</option>
+                                <option value="lavado-sencillo">Lavado de Automovil Sencillo — $25.000</option>
+                                <option value="polichado-completo">Polichado Completo — $45.000</option>
+                                <option value="lavado-motor">Lavado de Motor — $30.000</option>
+                                <option value="lavado-interior">Lavado Interior — $35.000</option>
+                                <option value="encerado-premium">Encerado Premium — $55.000</option>
+                                    
+                            </select>
+                            </div>
+
+                            <div class="form-grid-2">
+                                <div>
+                                    <label class="form-label" for="cita-fecha">Fecha</label>
+                                    <input type="date" id="cita-fecha" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="cita-hora">Hora</label>
+                                    <input type="time" id="cita-hora" class="form-input" value="09:00" required min="07:00" max="18:00">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="form-label" for="cita-vehiculo">Vehículo (placa o descripción)</label>
+                                <input type="text" id="cita-vehiculo" class="form-input" placeholder="Ej: ABC-123 Toyota Corolla" required>
+                            </div>
+
+                            <div>
+                                <label class="form-label" for="cita-notas">Notas adicionales</label>
+                                <textarea id="cita-notas" class="form-input" rows="2" placeholder="Algún detalle especial..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full justify-center">
+                                <span class="material-symbols-outlined" style="font-size:18px">event_available</span>
+                                Agendar Cita
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista del historial de citas agendadas -->
+                <div class="lg:col-span-3">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-extrabold text-gray-800 text-base flex items-center gap-2">
+                            <span class="material-symbols-outlined text-blue-500">list_alt</span>
+                            Historial de Citas
+                        </h3>
+                        <button onclick="limpiarCitas()" class="bg-red-50 text-red-500 hover:bg-red-100 px-3 py-1.5 rounded-xl font-semibold transition text-xs flex items-center gap-1">
+                            <span class="material-symbols-outlined" style="font-size:16px">delete_sweep</span> Limpiar
+                        </button>
+                    </div>
+                    <div id="lista-citas" class="space-y-4">
+                        <!-- El contenido de las citas se genera dinámicamente mediante JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /vista-citas -->
+
+
+        <!-- ─── VISTA: PROMOCIONES ─── -->
+        <div id="vista-promociones" class="vista">
+            <div class="mb-6 flex justify-between items-center">
+                <div>
+                    <h2 class="section-title">
+                        <span class="material-symbols-outlined text-purple-600" style="vertical-align:-5px;font-size:1.6rem">local_offer</span>
+                        Gestión de Promociones
+                    </h2>
+                    <p class="section-subtitle">Crea, edita y administra las ofertas para tus clientes.</p>
+                </div>
+                <button onclick="abrirModalPromo()" class="btn-primary" style="padding:9px 16px; font-size:0.8rem;">
+                    <span class="material-symbols-outlined" style="font-size:16px">add</span>
+                    Nueva Promoción
+                </button>
+            </div>
+
+            <!-- Banner de promoción destacada de temporada -->
+            <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 rounded-2xl p-6 text-white mb-8 flex flex-col md:flex-row justify-between items-center gap-4 shadow-lg">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">🎉 Oferta de temporada</p>
+                    <h3 class="text-xl font-extrabold">Hasta un 50% de descuento en todos los servicios</h3>
+                    <p class="text-sm opacity-80 mt-1">Aplica tu cupón al momento de agendar y ahorra en tu próxima visita.</p>
+                </div>
+                <button onclick="showView('vista-citas')" class="whitespace-nowrap bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl hover:bg-indigo-50 transition flex items-center gap-2 text-sm">
+                    <span class="material-symbols-outlined" style="font-size:16px">redeem</span>
+                    Agendar ahora
+                </button>
+            </div>
+
+            <div id="grid-promos" class="promos-grid">
+                <!-- El contenido de las promociones se genera dinámicamente mediante JavaScript -->
+            </div>
+        </div><!-- /vista-promociones -->
+
+
+        <!-- ─── VISTA: MI PERFIL ─── -->
+        <div id="vista-perfil" class="vista">
+            <div class="mb-6">
+                <h2 class="section-title">
+                    <span class="material-symbols-outlined text-green-600" style="vertical-align:-5px;font-size:1.6rem">manage_accounts</span>
+                    Mi Perfil
+                </h2>
+                <p class="section-subtitle">Administra tu información personal y tus vehículos registrados.</p>
+            </div>
+
+            <div class="perfil-layout">
+
+                <!-- Barra lateral del perfil con avatar y estadísticas -->
+                <div class="space-y-5">
+                    <div class="perfil-avatar-card">
+                        <div class="perfil-avatar" id="perfil-avatar-inicial">A</div>
+                        <p class="perfil-card-nombre" id="perfil-header-nombre">Administrador</p>
+                        <p class="perfil-card-email" id="perfil-header-email">admin@mail.com</p>
+                        <div class="perfil-membresia-wrap">
+                            <span class="material-symbols-outlined" style="font-size:16px">workspace_premium</span>
+                            Membresía <span id="perfil-membresia" class="ml-1">Platinum</span>
+                        </div>
+                        <div class="perfil-stats">
+                            <div class="perfil-stat">
+                                <span class="perfil-stat-num">12</span>
+                                <span class="perfil-stat-label">Servicios</span>
+                            </div>
+                            <div class="perfil-stat">
+                                <span class="perfil-stat-num">2</span>
+                                <span class="perfil-stat-label">Vehículos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de acciones rápidas del perfil -->
+                    <div class="card space-y-3">
+                        <p class="text-xs font-extrabold text-gray-500 uppercase tracking-wider">Acciones rápidas</p>
+                        <button onclick="showView('vista-citas')" class="w-full flex items-center gap-2 text-sm font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-4 py-3 rounded-xl transition">
+                            <span class="material-symbols-outlined text-lg">calendar_month</span> Agendar cita
+                        </button>
+                        <button onclick="showView('vista-promociones')" class="w-full flex items-center gap-2 text-sm font-semibold text-purple-600 bg-purple-50 hover:bg-purple-100 px-4 py-3 rounded-xl transition">
+                            <span class="material-symbols-outlined text-lg">local_offer</span> Ver promociones
+                        </button>
+                        <button onclick="cerrarSesion()" class="w-full flex items-center gap-2 text-sm font-semibold text-red-500 bg-red-50 hover:bg-red-100 px-4 py-3 rounded-xl transition">
+                            <span class="material-symbols-outlined text-lg">logout</span> Cerrar sesión
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contenedor principal de la información del perfil del usuario -->
+                <div class="space-y-6">
+
+                    <!-- Formulario de edición de información personal -->
+                    <div class="card">
+                        <h3 class="font-extrabold text-gray-800 text-base mb-5 flex items-center gap-2 pb-3 border-b">
+                            <span class="material-symbols-outlined text-blue-500">person</span>
+                            Información Personal
+                        </h3>
+                        <form id="form-perfil" class="space-y-4">
+                            <div class="form-grid-2">
+                                <div>
+                                    <label class="form-label" for="perfil-nombre">Nombre completo</label>
+                                    <input type="text" id="perfil-nombre" class="form-input" placeholder="Tu nombre">
+                                </div>
+                                <div>
+                                    <label class="form-label" for="perfil-email">Correo electrónico</label>
+                                    <input type="email" id="perfil-email" class="form-input" placeholder="tu@correo.com">
+                                </div>
+                            </div>
+                            <div class="form-grid-2">
+                                <div>
+                                    <label class="form-label" for="perfil-telefono">Teléfono</label>
+                                    <input type="tel" id="perfil-telefono" class="form-input" placeholder="+57 300 000 0000">
+                                </div>
+                                <div>
+                                    <label class="form-label" for="perfil-direccion">Dirección</label>
+                                    <input type="text" id="perfil-direccion" class="form-input" placeholder="Calle, ciudad">
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="btn-primary">
+                                    <span class="material-symbols-outlined" style="font-size:17px">save</span>
+                                    Guardar cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sección de gestión de vehículos registrados -->
+                    <div class="card">
+                        <div class="flex items-center justify-between pb-3 border-b mb-5">
+                            <h3 class="font-extrabold text-gray-800 text-base flex items-center gap-2">
+                                <span class="material-symbols-outlined text-blue-500">directions_car</span>
+                                Mis Vehículos
+                            </h3>
+                            <button onclick="abrirModalVehiculo()" class="btn-primary" style="padding:9px 16px; font-size:0.8rem;">
+                                <span class="material-symbols-outlined" style="font-size:16px">add</span>
+                                Agregar
+                            </button>
+                        </div>
+                        <div id="lista-vehiculos" class="space-y-3">
+                            <!-- La lista de vehículos se genera dinámicamente mediante JavaScript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /vista-perfil -->
+
+    </main>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer class="bg-white border-t mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+            <p>© 2024 Flashwash. Todos los derechos reservados.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-blue-600 transition">Políticas de Privacidad</a>
+                <a href="#" class="hover:text-blue-600 transition">Términos del Servicio</a>
+                <a href="#" class="hover:text-blue-600 transition">Soporte Corporativo</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════ MODAL: AGREGAR VEHÍCULO ═══════════════════ -->
+    <div id="modal-vehiculo" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span class="modal-title">
+                    <span class="material-symbols-outlined text-blue-500" style="vertical-align:-5px">directions_car</span>
+                    Agregar Vehículo
+                </span>
+                <button class="btn-close-modal" onclick="cerrarModalVehiculo()">✕</button>
+            </div>
+            <form id="form-vehiculo" class="space-y-4">
+                <div class="form-grid-2">
+                    <div>
+                        <label class="form-label" for="v-marca">Marca</label>
+                        <input type="text" id="v-marca" class="form-input" placeholder="Toyota" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="v-modelo">Modelo</label>
+                        <input type="text" id="v-modelo" class="form-input" placeholder="Corolla" required>
+                    </div>
+                </div>
+                <div class="form-grid-2">
+                    <div>
+                        <label class="form-label" for="v-placa">Placa</label>
+                        <input type="text" id="v-placa" class="form-input" placeholder="ABC-123" required style="text-transform:uppercase">
+                    </div>
+                    <div>
+                        <label class="form-label" for="v-tipo">Tipo</label>
+                        <select id="v-tipo" class="form-input">
+                             <option value="Motocicleta">Motocicleta</option>
+                            <option value="Sedán">Sedán</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Camioneta">Camioneta</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label" for="v-color">Color</label>
+                    <input type="text" id="v-color" class="form-input" placeholder="Blanco, Negro, Gris...">
+                </div>
+                <div class="flex gap-3 pt-2">
+                    <button type="button" onclick="cerrarModalVehiculo()" class="btn-secondary flex-1 justify-center">Cancelar</button>
+                    <button type="submit" class="btn-primary flex-1 justify-center">
+                        <span class="material-symbols-outlined" style="font-size:17px">add_circle</span>
+                        Agregar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ MODULO: EDITAR CITA ═══════════════════ -->
+    <div id="modal-editar-cita" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span class="modal-title">
+                    <span class="material-symbols-outlined text-blue-500" style="vertical-align:-5px">edit</span>
+                    Editar Cita
+                </span>
+                <button class="btn-close-modal" onclick="cerrarModalEditarCita()">✕</button>
+            </div>
+            <form id="form-editar-cita" class="space-y-4">
+                <input type="hidden" id="edit-cita-id">
+                <div>
+                    <label class="form-label" for="edit-cita-servicio">Servicio</label>
+                    <select id="edit-cita-servicio" class="form-input" required>
+                        <option value="lavado-moto">Lavado de Motocicleta — $15.000</option>
+                        <option value="lavado-sencillo">Lavado de Automovil Sencillo — $25.000</option>
+                        <option value="polichado-completo">Polichado Completo — $45.000</option>
+                        <option value="lavado-motor">Lavado de Motor — $30.000</option>
+                        <option value="lavado-interior">Lavado Interior — $35.000</option>
+                        <option value="encerado-premium">Encerado Premium — $55.000</option>
+                    </select>
+                </div>
+
+                <div class="form-grid-2">
+                    <div>
+                        <label class="form-label" for="edit-cita-fecha">Fecha</label>
+                        <input type="date" id="edit-cita-fecha" class="form-input" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="edit-cita-hora">Hora</label>
+                        <input type="time" id="edit-cita-hora" class="form-input" required min="07:00" max="18:00">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="edit-cita-vehiculo">Vehículo (placa o descripción)</label>
+                    <input type="text" id="edit-cita-vehiculo" class="form-input" required>
+                </div>
+
+                <div>
+                    <label class="form-label" for="edit-cita-notas">Notas adicionales</label>
+                    <textarea id="edit-cita-notas" class="form-input" rows="2"></textarea>
+                </div>
+
+                <div>
+                    <label class="form-label" for="edit-cita-estado">Estado</label>
+                    <select id="edit-cita-estado" class="form-input" required>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En proceso">En proceso</option>
+                        <option value="Completada">Completada</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="button" onclick="cerrarModalEditarCita()" class="btn-secondary flex-1 justify-center">Cancelar</button>
+                    <button type="submit" class="btn-primary flex-1 justify-center">
+                        <span class="material-symbols-outlined" style="font-size:17px">save</span>
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ MODULO: CREAR/EDITAR PROMOCIÓN ═══════════════════ -->
+    <div id="modal-promocion" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span class="modal-title">
+                    <span class="material-symbols-outlined text-purple-500" style="vertical-align:-5px">local_offer</span>
+                    Promoción
+                </span>
+                <button class="btn-close-modal" onclick="cerrarModalPromo()">✕</button>
+            </div>
+            <form id="form-promocion" class="space-y-4">
+                <input type="hidden" id="promo-id">
+                
+                <div>
+                    <label class="form-label" for="promo-titulo">Título de la promoción</label>
+                    <input type="text" id="promo-titulo" class="form-input" required placeholder="Ej: Lavado Express 2x1">
+                </div>
+
+                <div>
+                    <label class="form-label" for="promo-desc">Descripción</label>
+                    <textarea id="promo-desc" class="form-input" rows="2" required placeholder="Detalles de la oferta..."></textarea>
+                </div>
+
+                <div class="form-grid-2">
+                    <div>
+                        <label class="form-label" for="promo-descuento">Descuento</label>
+                        <input type="text" id="promo-descuento" class="form-input" required placeholder="Ej: 50% o $10.000">
+                    </div>
+                    <div>
+                        <label class="form-label" for="promo-cupon">Código del cupón</label>
+                        <input type="text" id="promo-cupon" class="form-input" required placeholder="FLASH2X1" style="text-transform:uppercase">
+                    </div>
+                </div>
+                
+                <div class="form-grid-2">
+                    <div>
+                        <label class="form-label" for="promo-color">Color de Tarjeta</label>
+                        <select id="promo-color" class="form-input">
+                            <option value="promo-blue">Azul</option>
+                            <option value="promo-purple">Morado</option>
+                            <option value="promo-green">Verde</option>
+                            <option value="promo-orange">Naranja</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="promo-icono">Ícono</label>
+                        <select id="promo-icono" class="form-input">
+                            <option value="local_car_wash">Lavado (Coche con agua)</option>
+                            <option value="verified">Premium (Verificado)</option>
+                            <option value="build">Herramienta (Llave)</option>
+                            <option value="groups">Familiar (Grupo)</option>
+                            <option value="local_fire_department">Fuego</option>
+                            <option value="star">Estrella</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="promo-estado">Estado</label>
+                    <select id="promo-estado" class="form-input">
+                        <option value="true">Activa</option>
+                        <option value="false">Inactiva</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="button" onclick="cerrarModalPromo()" class="btn-secondary flex-1 justify-center">Cancelar</button>
+                    <button type="submit" class="btn-primary flex-1 justify-center">
+                        <span class="material-symbols-outlined" style="font-size:17px">save</span>
+                        Guardar Promoción
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ TOAST CONTAINER ═══════════════════ -->
+    <div id="toast-container"></div>
+
+    <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+    <script src="js/dashboard.js?v=1.2"></script>
+
+</body>
+</html>

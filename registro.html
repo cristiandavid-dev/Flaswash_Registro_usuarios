@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro de nuevos usuarios - FlashWash">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Registro de Usuarios — Flashwash</title>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col font-[Inter]">
+    <!-- Animación de burbujas -->
+    <div class="bubbles-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Encabezado de navegación -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="img/logo.png" alt="Logo FlashWash" class="w-10 h-10 object-contain">
+                <h1 class="text-2xl font-black text-blue-600">Flashwash</h1>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
+                <a href="index.html#inicio" class="hover:text-blue-600 transition">Inicio</a>
+                <a href="index.html#servicios" class="hover:text-blue-600 transition">Servicios</a>
+                <a href="index.html#precios" class="hover:text-blue-600 transition">Precios</a>
+                <a href="index.html#login" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl transition shadow-sm">Ingresar al panel</a>
+            </nav>
+            <a href="index.html#login" class="md:hidden bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-xl">Ingresar</a>
+        </div>
+    </header>
+
+    <!-- Sección principal de Registro -->
+    <section class="flex flex-grow min-h-[calc(100vh-73px)]">
+
+        <!-- Banner lateral Presentacion -->
+        <div class="hidden lg:block lg:w-3/5 relative overflow-hidden bg-blue-900">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-950/80 via-blue-900/40 to-blue-950/80 z-10"></div>
+            <img src="img/lavado1.jpg" class="absolute w-full h-full object-cover filter brightness-75" alt="Lavado de vehículo">
+
+            <div class="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-12">
+                <div class="w-16 h-16 bg-blue-600/30 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined text-white" style="font-size: 36px;">person_add</span>
+                </div>
+                <h2 class="text-5xl font-black mb-4 leading-tight drop-shadow-lg">
+                    Únete a la familia<br>Flashwash
+                </h2>
+                <p class="text-lg text-white/90 max-w-md">Crea tu cuenta en segundos para agendar servicios, acceder a descuentos y gestionar tus vehículos.</p>
+                
+                <div class="flex items-center gap-6 mt-8 text-sm font-medium text-blue-100">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-yellow-400">check_circle</span>
+                        Reserva rápida
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-yellow-400">check_circle</span>
+                        Historial de servicios
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-yellow-400">check_circle</span>
+                        Promociones exclusivas
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <div class="w-full lg:w-2/5 flex items-center justify-center py-12 px-6 bg-slate-50">
+            <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+
+                <div class="text-center mb-6">
+                    <img src="img/logo.png" class="w-20 mx-auto mb-3 drop-shadow-md" alt="Logo FlashWash">
+                    <h2 class="text-2xl font-extrabold text-gray-900">Crear Cuenta</h2>
+                    <p class="text-sm text-gray-500 mt-1">Diligencia tus datos para registrarte</p>
+                </div>
+
+                <form id="registroForm" class="space-y-4">
+                    <!-- Campo Nombre -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="nombre">Nombre</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">person</span>
+                            <input
+                                type="text"
+                                id="nombre"
+                                placeholder="Tu nombre completo"
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Usuario -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="usuario">Usuario</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">account_circle</span>
+                            <input
+                                type="text"
+                                id="usuario"
+                                placeholder="Nombre de usuario"
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Correo Electrónico -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="correo">Correo Electrónico</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">mail</span>
+                            <input
+                                type="email"
+                                id="correo"
+                                placeholder="tu@correo.com"
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Número de Teléfono -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="telefono">Número de Teléfono</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">call</span>
+                            <input
+                                type="tel"
+                                id="telefono"
+                                placeholder="Ej. 3001234567"
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo Contraseña -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5" for="password">Contraseña</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-3 text-gray-400 text-lg">lock</span>
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="••••••••"
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition bg-white"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3.5 rounded-xl transition shadow-md text-sm mt-2 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-lg">how_to_reg</span>
+                        Registrarse
+                    </button>
+                </form>
+
+                <p id="mensaje" class="text-center mt-3 text-sm font-medium"></p>
+
+                <div class="mt-6 pt-6 border-t border-gray-100 text-center">
+                    <p class="text-xs text-gray-500">
+                        ¿Ya tienes una cuenta registrada? 
+                        <a href="index.html#login" class="font-bold text-blue-600 hover:underline">Inicio de sesión</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img src="img/logo.png" alt="Logo" class="w-8 h-8 object-contain opacity-80">
+                <span class="text-white font-black text-lg">Flashwash</span>
+            </div>
+            <p class="text-sm text-center">© 2024 Flashwash. Todos los derechos reservados.</p>
+            <div class="flex gap-6 text-sm">
+                <a href="index.html" class="hover:text-white transition">Inicio</a>
+                <a href="index.html#servicios" class="hover:text-white transition">Servicios</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+</html>
